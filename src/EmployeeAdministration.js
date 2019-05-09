@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import EmplpyeeListComponent from './component/EmployeeListComponent';
 
 class EmployeeAdministration extends Component {
     render() {
-        return (
-            <h1>Employee Administration Application</h1>
+        return (<>
+                <h1>Employee Administration Application</h1>
+                <EmplpyeeListComponent/>
+            </>
         )
     }
 }
