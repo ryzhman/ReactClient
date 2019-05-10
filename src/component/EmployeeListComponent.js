@@ -1,6 +1,22 @@
 import React, {Component} from 'react';
+import EmployeeDataService from "../service/EmployeeDataService";
 
 class EmployeeListComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.getAllEmployees = this.getAllEmployees.bind(this);
+    }
+
+    getAllEmployees() {
+        EmployeeDataService.fetchAllEmployeesData().then(response => {
+            console.log(response);
+        })
+    }
+
+    componentDidMount() {
+        this.getAllEmployees();
+    }
+
     render() {
         return (
             <div className="container">
