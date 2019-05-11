@@ -4,12 +4,16 @@ import EmployeeDataService from "../service/EmployeeDataService";
 class EmployeeListComponent extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            employees: []
+        };
         this.getAllEmployees = this.getAllEmployees.bind(this);
     }
 
     getAllEmployees() {
         EmployeeDataService.fetchAllEmployeesData().then(response => {
             console.log(response);
+            this.setState({employees: JSON.parse(response.data.employees)});
         })
     }
 
@@ -20,7 +24,7 @@ class EmployeeListComponent extends Component {
     render() {
         return (
             <div className="container">
-                <h3>All Courses</h3>
+                <h3>All Employees</h3>
                 <div className="container">
                     <table className="table">
                         <thead>
@@ -33,13 +37,18 @@ class EmployeeListComponent extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Margaret Luzogub</td>
-                            <td>99000</td>
-                            <td>33</td>
-                            <td>n/a</td>
-                        </tr>
+                        {
+                            this.state.employees.map(
+                                employee =>
+                                    <tr key={employee.id}>
+                                        <td>{employee.id}</td>
+                                        <td>{employee.employee_name}</td>
+                                        <td>{employee.employee_salary}</td>
+                                        <td>{employee.employee_age}</td>
+                                        <td>{employee.profile_image}</td>
+                                    </tr>
+                            )
+                        }
                         </tbody>
                     </table>
                 </div>

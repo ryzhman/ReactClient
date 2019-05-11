@@ -4,7 +4,7 @@ import EmplpyeeListComponent from './component/EmployeeListComponent';
 class EmployeeAdministration extends Component {
     render() {
         return (<>
-                <h1>Employee Administration Application</h1>
+                <h1 className="lead">Employee Administration Application</h1>
                 <EmplpyeeListComponent/>
             </>
         )
